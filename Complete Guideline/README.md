@@ -268,3 +268,388 @@ G = Books Borrowed
 ```
 
 ---
+
+
+# 7. Stage 3 — Data Validation
+
+The purpose of data validation is to identify incorrect, missing, duplicated, or inconsistent data.
+
+We will check:
+
+```text
+1. Missing Data
+2. Duplicate Book IDs
+3. Publication Year
+4. Total Copies
+5. Books Borrowed
+6. Borrowed ≤ Total Copies
+7. Department
+```
+
+---
+
+# 7.1 Missing Data Check
+
+Select:
+
+```text
+A2:G16
+```
+
+Then:
+
+```text
+Home
+→ Find & Select
+→ Go To Special
+→ Blanks
+→ OK
+```
+
+### Expected Result
+
+If no blank cells are selected:
+
+```text
+No missing data found.
+```
+
+For this dataset:
+
+**No missing values were found.**
+
+---
+
+# 7.2 Duplicate Book ID Check
+
+Select:
+
+```text
+A2:A16
+```
+
+Then:
+
+```text
+Home
+→ Conditional Formatting
+→ Highlight Cells Rules
+→ Duplicate Values
+```
+
+Click:
+
+```text
+OK
+```
+
+### Expected Result
+
+No Book IDs should be highlighted.
+
+```text
+No duplicate Book IDs found.
+```
+
+The dataset contains unique Book IDs:
+
+```text
+B001 → B015
+```
+
+---
+
+# 7.3 Publication Year Validation
+
+Publication Year is stored in:
+
+```text
+E2:E16
+```
+
+The given dataset contains publication years:
+
+```text
+2017
+2018
+2019
+2020
+2021
+```
+
+These are valid years for the dataset.
+
+---
+
+## Excel Check
+
+Select:
+
+```text
+E2:E16
+```
+
+Then:
+
+```text
+Home
+→ Conditional Formatting
+→ Highlight Cells Rules
+→ Less Than
+```
+
+Enter:
+
+```text
+1900
+```
+
+Then also check values above the current year if required.
+
+For this assignment, the given years are valid.
+
+### Result
+
+```text
+All publication years are valid.
+```
+
+---
+
+# 7.4 Total Copies Validation
+
+Total Copies are stored in:
+
+```text
+F2:F16
+```
+
+Total copies should be positive numbers.
+
+Select:
+
+```text
+F2:F16
+```
+
+Then:
+
+```text
+Home
+→ Conditional Formatting
+→ Highlight Cells Rules
+→ Less Than
+```
+
+Enter:
+
+```text
+1
+```
+
+If no values are highlighted:
+
+```text
+All Total Copies values are valid.
+```
+
+---
+
+# 7.5 Books Borrowed Validation
+
+Books Borrowed are stored in:
+
+```text
+G2:G16
+```
+
+Books Borrowed should be numeric and should not be negative.
+
+Select:
+
+```text
+G2:G16
+```
+
+Then:
+
+```text
+Home
+→ Conditional Formatting
+→ Highlight Cells Rules
+→ Less Than
+```
+
+Enter:
+
+```text
+0
+```
+
+No negative values are present in the dataset.
+
+---
+
+# 7.6 Check Whether Borrowed Books Exceed Total Copies
+
+This is the most important validation in this dataset.
+
+The requirement says:
+
+```text
+Books Borrowed ≤ Total Copies
+```
+
+We can check this using an additional temporary column.
+
+For example, enter in:
+
+```text
+J1
+```
+
+```text
+Validation Status
+```
+
+Then in:
+
+```text
+J2
+```
+
+enter:
+
+```excel
+=IF(G2>F2,"Invalid","Valid")
+```
+
+Press:
+
+```text
+Enter
+```
+
+Then double-click the Fill Handle.
+
+The formula will fill:
+
+```text
+J2:J16
+```
+
+---
+
+## Formula Explanation
+
+```excel
+=IF(G2>F2,"Invalid","Valid")
+```
+
+means:
+
+```text
+If Books Borrowed > Total Copies
+        ↓
+      Invalid
+
+Otherwise
+        ↓
+       Valid
+```
+
+---
+
+# 7.7 Validation Result
+
+The provided dataset contains a major inconsistency.
+
+For example:
+
+```text
+B001
+Total Copies = 5
+Books Borrowed = 12
+```
+
+But:
+
+```text
+12 > 5
+```
+
+Therefore:
+
+```text
+B001 = Invalid
+```
+
+The same issue occurs for the other records as well.
+
+### Examples
+
+| Book ID | Total Copies | Books Borrowed | Status  |
+| ------- | -----------: | -------------: | ------- |
+| B001    |            5 |             12 | Invalid |
+| B002    |            4 |             10 | Invalid |
+| B003    |            3 |              8 | Invalid |
+| B004    |            6 |             15 | Invalid |
+| B005    |            5 |              7 | Invalid |
+| B006    |            4 |              9 | Invalid |
+| B007    |            3 |             11 | Invalid |
+| B008    |            4 |              6 | Invalid |
+| B009    |            5 |             13 | Invalid |
+| B010    |            2 |              5 | Invalid |
+| B011    |            6 |             14 | Invalid |
+| B012    |            3 |              8 | Invalid |
+| B013    |            4 |             12 | Invalid |
+| B014    |            5 |             10 | Invalid |
+| B015    |            2 |              4 | Invalid |
+
+Therefore:
+
+```text
+15 out of 15 records violate the condition
+Books Borrowed ≤ Total Copies.
+```
+
+---
+
+# 7.8 Department Validation
+
+The departments in this dataset are:
+
+```text
+CSE
+EEE
+BBA
+```
+
+Select:
+
+```text
+C2:C16
+```
+
+You can use:
+
+```text
+Data
+→ Data Validation
+```
+
+and create a list:
+
+```text
+CSE,EEE,BBA
+```
+
+This prevents invalid department names from being entered.
+
+For the current dataset:
+
+```text
+All department values are valid.
+```
+
+---
