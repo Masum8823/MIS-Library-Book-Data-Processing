@@ -125,3 +125,146 @@ Two new fields will be added later:
 | I      | Borrowing Rate   |
 
 ---
+
+# 5. Stage 1 — Data Collection
+
+## Task
+
+Identify at least **3 possible sources** from which library book data could be collected.
+
+## Possible Sources
+
+### 1. Library Management System
+
+The library management system can provide:
+
+* Book ID
+* Book Title
+* Author
+* Department
+* Publication Year
+* Total Copies
+
+### 2. Book Issue / Borrowing Records
+
+The borrowing system can provide:
+
+* Books Borrowed
+* Borrowing history
+* Issue records
+
+### 3. University Department Records
+
+Academic departments can provide:
+
+* Department-wise book information
+* Recommended textbooks
+* Course-related books
+* Book categories
+
+### 4. Library Inventory Records
+
+Inventory records can provide:
+
+* Total copies
+* Available copies
+* Damaged or missing books
+* New book additions
+
+---
+
+## Source Mapping
+
+| Data             | Possible Source              |
+| ---------------- | ---------------------------- |
+| Book ID          | Library Management System    |
+| Book Title       | Library Management System    |
+| Department       | Department / Library Records |
+| Author           | Library Catalog              |
+| Publication Year | Library Catalog              |
+| Total Copies     | Library Inventory            |
+| Books Borrowed   | Borrowing / Issue Records    |
+
+---
+
+# 6. Stage 2 — Data Entry
+
+Open Microsoft Excel.
+
+---
+
+## Step 1 — Create a New Workbook
+
+Open:
+
+```text
+Microsoft Excel
+→ Blank Workbook
+```
+
+---
+
+## Step 2 — Save the File
+
+Go to:
+
+```text
+File
+→ Save As
+```
+
+Use a suitable filename:
+
+```text
+University_Library_Book_Data_Processing.xlsx
+```
+
+---
+
+## Step 3 — Enter Headers
+
+Enter the following headers in Row 1:
+
+| Cell | Header           |
+| ---- | ---------------- |
+| A1   | Book ID          |
+| B1   | Book Title       |
+| C1   | Department       |
+| D1   | Author           |
+| E1   | Publication Year |
+| F1   | Total Copies     |
+| G1   | Books Borrowed   |
+
+---
+
+## Step 4 — Enter the Raw Data
+
+Enter the 15 records from:
+
+```text
+Row 2 → Row 16
+```
+
+Therefore:
+
+```text
+A1:G16
+```
+
+will contain the complete raw dataset.
+
+---
+
+## Final Initial Structure
+
+```text
+A = Book ID
+B = Book Title
+C = Department
+D = Author
+E = Publication Year
+F = Total Copies
+G = Books Borrowed
+```
+
+---
