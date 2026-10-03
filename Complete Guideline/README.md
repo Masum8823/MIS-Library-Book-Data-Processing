@@ -1758,3 +1758,150 @@ r ≈ 0.770
 shows a positive relationship in the given data.
 
 ---
+
+# 13. Important Data Validation Finding
+
+This is an important part of the project.
+
+The raw dataset contains a logical inconsistency.
+
+The requirement says:
+
+```text
+Books Borrowed ≤ Total Copies
+```
+
+But the provided data contains:
+
+```text
+Books Borrowed > Total Copies
+```
+
+for every record.
+
+For example:
+
+```text
+B001
+
+Total Copies = 5
+Books Borrowed = 12
+```
+
+This gives:
+
+```text
+12 > 5
+```
+
+which is invalid if `Books Borrowed` means the **current number of copies physically borrowed at one time**.
+
+---
+
+## Effect on Calculations
+
+Because of this issue:
+
+```text
+Available Copies = Total Copies − Books Borrowed
+```
+
+produces negative values.
+
+Example:
+
+```text
+5 − 12 = -7
+```
+
+Similarly:
+
+```text
+Borrowing Rate
+= 12 / 5 × 100
+= 240%
+```
+
+Therefore, the calculated:
+
+```text
+Available Copies = -83
+Average Borrowing Rate ≈ 239.89%
+```
+
+should not be interpreted as real-world library inventory values.
+
+---
+
+## Possible Explanation
+
+One possible interpretation is that **Books Borrowed** represents the total number of borrowing transactions over a period rather than the number of copies currently checked out.
+
+Under that interpretation, a book can be borrowed multiple times, so the borrowing count can exceed the number of physical copies.
+
+However, this interpretation conflicts with the specific validation requirement:
+
+```text
+Books Borrowed do not exceed Total Copies
+```
+
+Therefore, for this assignment, the correct approach is to **identify and report the inconsistency during Data Validation**.
+
+---
+
+# 14. Final Analysis Summary
+
+| Analysis                                 |                         Result |
+| ---------------------------------------- | -----------------------------: |
+| Number of Book Records                   |                             15 |
+| Total Copies                             |                             61 |
+| Total Books Borrowed                     |                            144 |
+| Calculated Available Copies              |                            -83 |
+| Average Borrowing Rate                   |                        239.89% |
+| Highest Borrowing Rate                   |                        366.67% |
+| Lowest Borrowing Rate                    |                           140% |
+| CSE Average Borrowing Rate               |                        257.14% |
+| EEE Average Borrowing Rate               |                        203.75% |
+| BBA Average Borrowing Rate               |                        245.83% |
+| CSE Total Borrowed                       |                             84 |
+| EEE Total Borrowed                       |                             31 |
+| BBA Total Borrowed                       |                             29 |
+| Most Borrowed Book                       | Operating System Concepts — 15 |
+| Least Borrowed Book                      |  Human Resource Management — 4 |
+| Books with Exactly 0 Available Copies    |                              0 |
+| Records with ≤ 0 Calculated Availability |                             15 |
+| Total Copies vs Borrowed Correlation     |                        ≈ 0.770 |
+| Borrowed > Total Copies                  |                     15 records |
+
+---
+
+# 15. Final Excel Structure
+
+After processing, the main dataset should look like this:
+
+| Column | Header           |
+| ------ | ---------------- |
+| A      | Book ID          |
+| B      | Book Title       |
+| C      | Department       |
+| D      | Author           |
+| E      | Publication Year |
+| F      | Total Copies     |
+| G      | Books Borrowed   |
+| H      | Available Copies |
+| I      | Borrowing Rate   |
+
+---
+
+## Example
+
+| Book ID | Book Title                 | Dept. | Year | Total | Borrowed | Available |    Rate |
+| ------- | -------------------------- | ----- | ---: | ----: | -------: | --------: | ------: |
+| B001    | Introduction to Algorithms | CSE   | 2019 |     5 |       12 |        -7 |    240% |
+| B002    | Database System Concepts   | CSE   | 2018 |     4 |       10 |        -6 |    250% |
+| B003    | Computer Networks          | CSE   | 2020 |     3 |        8 |        -5 | 266.67% |
+| B004    | Operating System Concepts  | CSE   | 2018 |     6 |       15 |        -9 |    250% |
+| ...     | ...                        | ...   |  ... |   ... |      ... |       ... |     ... |
+| B015    | Human Resource Management  | BBA   | 2021 |     2 |        4 |        -2 |    200% |
+
+---
