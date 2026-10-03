@@ -1391,3 +1391,370 @@ In simple terms:
 > Books with more total copies generally tend to have more borrowing activity in the given dataset.
 
 ---
+
+# 11. Stage 7 — Reporting
+
+The major findings can be summarized in a report.
+
+## Library Data Processing Summary
+
+The dataset contains:
+
+```text
+15 books
+61 total copies
+144 recorded borrowed books
+```
+
+The calculated average borrowing rate is:
+
+```text
+239.89%
+```
+
+The highest borrowing rate is:
+
+```text
+366.67%
+```
+
+for:
+
+```text
+Principles of Marketing
+```
+
+The lowest borrowing rate is:
+
+```text
+140%
+```
+
+for:
+
+```text
+Engineering Mathematics
+```
+
+Department-wise total borrowing:
+
+```text
+CSE = 84
+EEE = 31
+BBA = 29
+```
+
+The most borrowed book is:
+
+```text
+Operating System Concepts
+15 borrowed
+```
+
+The least borrowed book is:
+
+```text
+Human Resource Management
+4 borrowed
+```
+
+The correlation between total copies and books borrowed is approximately:
+
+```text
+0.770
+```
+
+indicating a positive relationship.
+
+---
+
+# 12. Stage 8 — Data Visualization
+
+The project requires at least 2 charts.
+
+We will create **5 useful charts**:
+
+```text
+1. Department-wise Books Borrowed
+2. Book-wise Borrowing Rate
+3. Available vs Borrowed Copies
+4. Department-wise Total Copies
+5. Total Copies vs Books Borrowed
+```
+
+---
+
+# 12.1 Chart 1 — Department-wise Books Borrowed
+
+First create this table:
+
+| Department | Total Books Borrowed |
+| ---------- | -------------------: |
+| CSE        |                   84 |
+| EEE        |                   31 |
+| BBA        |                   29 |
+
+---
+
+## Excel Steps
+
+Select:
+
+```text
+K1:L4
+```
+
+Then:
+
+```text
+Insert
+→ Column or Bar Chart
+→ 2-D Column
+→ Clustered Column
+```
+
+Change the chart title to:
+
+```text
+Department-wise Books Borrowed
+```
+
+### Axis
+
+```text
+X-axis = Department
+Y-axis = Total Books Borrowed
+```
+
+---
+
+# 12.2 Chart 2 — Book-wise Borrowing Rate
+
+We need:
+
+```text
+Book Title
+Borrowing Rate
+```
+
+These are:
+
+```text
+B2:B16
+I2:I16
+```
+
+Because the two columns are separated, you can create a small helper table.
+
+For example:
+
+| K                          | L              |
+| -------------------------- | -------------- |
+| Book Title                 | Borrowing Rate |
+| Introduction to Algorithms | 240%           |
+| Database System Concepts   | 250%           |
+| Computer Networks          | 266.67%        |
+| ...                        | ...            |
+
+Then select the table.
+
+Go to:
+
+```text
+Insert
+→ Column Chart
+→ 2-D Column
+→ Clustered Column
+```
+
+Chart title:
+
+```text
+Book-wise Borrowing Rate
+```
+
+---
+
+# 12.3 Chart 3 — Available vs Borrowed Copies
+
+Create a helper table:
+
+| Book Title                 | Available Copies | Books Borrowed |
+| -------------------------- | ---------------: | -------------: |
+| Introduction to Algorithms |               -7 |             12 |
+| Database System Concepts   |               -6 |             10 |
+| Computer Networks          |               -5 |              8 |
+| ...                        |              ... |            ... |
+
+Select the table.
+
+Then:
+
+```text
+Insert
+→ Column Chart
+→ Clustered Column
+```
+
+Chart title:
+
+```text
+Available vs. Borrowed Copies
+```
+
+### Axis
+
+```text
+X-axis = Book Title
+Y-axis = Number of Copies
+```
+
+### Important
+
+Because the raw dataset is inconsistent, Available Copies will contain negative values. The chart will visually show this problem.
+
+---
+
+# 12.4 Chart 4 — Department-wise Total Copies
+
+Create:
+
+| Department | Total Copies |
+| ---------- | -----------: |
+| CSE        |           33 |
+| EEE        |           16 |
+| BBA        |           12 |
+
+---
+
+## Formulas
+
+### CSE
+
+```excel
+=SUMIF(C2:C16,"CSE",F2:F16)
+```
+
+Result:
+
+```text
+33
+```
+
+### EEE
+
+```excel
+=SUMIF(C2:C16,"EEE",F2:F16)
+```
+
+Result:
+
+```text
+16
+```
+
+### BBA
+
+```excel
+=SUMIF(C2:C16,"BBA",F2:F16)
+```
+
+Result:
+
+```text
+12
+```
+
+---
+
+## Create Chart
+
+Select the table:
+
+```text
+K8:L11
+```
+
+Then:
+
+```text
+Insert
+→ Column Chart
+→ Clustered Column
+```
+
+Title:
+
+```text
+Department-wise Total Copies
+```
+
+---
+
+# 12.5 Chart 5 — Total Copies vs Books Borrowed
+
+This chart uses a **Scatter Chart**.
+
+Required data:
+
+```text
+X-axis = Total Copies
+Y-axis = Books Borrowed
+```
+
+Select:
+
+```text
+F1:G16
+```
+
+Then:
+
+```text
+Insert
+→ Scatter (X, Y)
+→ Scatter with only Markers
+```
+
+Change the title to:
+
+```text
+Total Copies vs. Books Borrowed
+```
+
+---
+
+## Add Trendline
+
+Click the chart.
+
+Then:
+
+```text
+Chart
+→ +
+→ Trendline
+→ Linear
+```
+
+The trendline will show the general relationship between:
+
+```text
+Total Copies
+```
+
+and:
+
+```text
+Books Borrowed
+```
+
+The correlation value:
+
+```text
+r ≈ 0.770
+```
+
+shows a positive relationship in the given data.
+
+---
