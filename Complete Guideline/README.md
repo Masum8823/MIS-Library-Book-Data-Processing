@@ -653,3 +653,741 @@ All department values are valid.
 ```
 
 ---
+
+# 8. Stage 4 — Data Storage
+
+After data validation and cleaning, the dataset should be stored in a structured digital format.
+
+## Recommended Storage Method
+
+Use an **Excel `.xlsx` file**.
+
+Example:
+
+```text
+University_Library_Book_Data_Processing.xlsx
+```
+
+---
+
+## Why Excel?
+
+Excel is suitable because it provides:
+
+* Structured rows and columns
+* Easy data entry
+* Formulas
+* Sorting and filtering
+* Conditional Formatting
+* Data Validation
+* Charts
+* Easy sharing
+* Easy reporting
+
+---
+
+## Optional CSV Storage
+
+The cleaned dataset can also be exported as:
+
+```text
+University_Library_Book_Data.csv
+```
+
+CSV is useful when the data needs to be imported into:
+
+* Database systems
+* Python
+* R
+* Other data analysis software
+
+---
+
+# 9. Stage 5 — Data Processing
+
+Now we calculate two new fields:
+
+```text
+Available Copies
+Borrowing Rate
+```
+
+---
+
+# 9.1 Add Available Copies Column
+
+Enter:
+
+```text
+H1
+```
+
+```text
+Available Copies
+```
+
+Formula:
+
+```text
+Available Copies
+=
+Total Copies − Books Borrowed
+```
+
+---
+
+## Excel Formula
+
+Click:
+
+```text
+H2
+```
+
+Enter:
+
+```excel
+=F2-G2
+```
+
+Press:
+
+```text
+Enter
+```
+
+Then double-click the Fill Handle.
+
+The formula will automatically fill:
+
+```text
+H2:H16
+```
+
+---
+
+## Formula Explanation
+
+```text
+F2 = Total Copies
+G2 = Books Borrowed
+```
+
+Therefore:
+
+```excel
+=F2-G2
+```
+
+means:
+
+```text
+Total Copies − Books Borrowed
+```
+
+---
+
+# 9.2 Add Borrowing Rate Column
+
+Enter:
+
+```text
+I1
+```
+
+```text
+Borrowing Rate
+```
+
+The formula is:
+
+```text
+Borrowing Rate
+=
+(Books Borrowed ÷ Total Copies) × 100
+```
+
+---
+
+## Excel Formula
+
+Click:
+
+```text
+I2
+```
+
+Enter:
+
+```excel
+=G2/F2*100
+```
+
+Press:
+
+```text
+Enter
+```
+
+Then double-click the Fill Handle.
+
+The formula will fill:
+
+```text
+I2:I16
+```
+
+---
+
+# 9.3 Example Calculation
+
+For B001:
+
+```text
+Total Copies = 5
+Books Borrowed = 12
+```
+
+Available Copies:
+
+```text
+5 − 12 = -7
+```
+
+Borrowing Rate:
+
+```text
+(12 ÷ 5) × 100
+= 240%
+```
+
+So:
+
+```text
+B001 Available Copies = -7
+B001 Borrowing Rate = 240%
+```
+
+---
+
+# 9.4 Important Note About the Dataset
+
+Normally, available copies should not be negative.
+
+Also, if Books Borrowed represents the current number of borrowed copies, borrowing rate should normally not exceed 100%.
+
+However, the supplied raw data contains values where:
+
+```text
+Books Borrowed > Total Copies
+```
+
+Therefore, the formulas produce negative Available Copies and Borrowing Rates above 100%.
+
+This is useful for demonstrating the **Data Validation** stage.
+
+---
+
+# 10. Stage 6 — Data Analysis
+
+Now we analyze the processed data.
+
+---
+
+# 10.1 Total Number of Copies
+
+Formula:
+
+```excel
+=SUM(F2:F16)
+```
+
+Result:
+
+```text
+61
+```
+
+Therefore:
+
+```text
+Total Copies = 61
+```
+
+---
+
+# 10.2 Total Books Borrowed
+
+Formula:
+
+```excel
+=SUM(G2:G16)
+```
+
+Result:
+
+```text
+144
+```
+
+Therefore:
+
+```text
+Total Books Borrowed = 144
+```
+
+---
+
+# 10.3 Total Available Copies
+
+Formula:
+
+```excel
+=SUM(H2:H16)
+```
+
+Result:
+
+```text
+-83
+```
+
+This negative result occurs because the raw data contains invalid records where borrowed books exceed total copies.
+
+Therefore:
+
+```text
+Calculated Available Copies = -83
+```
+
+### Important
+
+This should **not** be interpreted as 83 physically negative books. It is an indicator that the supplied dataset is inconsistent.
+
+---
+
+# 10.4 Average Borrowing Rate
+
+Formula:
+
+```excel
+=AVERAGE(I2:I16)
+```
+
+Result:
+
+```text
+239.89%
+```
+
+Therefore:
+
+```text
+Average Borrowing Rate ≈ 239.89%
+```
+
+Again, this unusually high value is caused by the invalid raw data.
+
+---
+
+# 10.5 Highest Borrowing Rate
+
+Formula:
+
+```excel
+=MAX(I2:I16)
+```
+
+Result:
+
+```text
+366.67%
+```
+
+This belongs to:
+
+```text
+B007 — Principles of Marketing
+```
+
+Calculation:
+
+```text
+11 ÷ 3 × 100
+= 366.67%
+```
+
+---
+
+# 10.6 Lowest Borrowing Rate
+
+Formula:
+
+```excel
+=MIN(I2:I16)
+```
+
+Result:
+
+```text
+140%
+```
+
+This belongs to:
+
+```text
+B005 — Engineering Mathematics
+```
+
+Calculation:
+
+```text
+7 ÷ 5 × 100
+= 140%
+```
+
+---
+
+# 10.7 Department-wise Average Borrowing Rate
+
+Create a separate table.
+
+For example:
+
+| K          | L                      |
+| ---------- | ---------------------- |
+| Department | Average Borrowing Rate |
+| CSE        |                        |
+| EEE        |                        |
+| BBA        |                        |
+
+---
+
+## CSE
+
+In L2:
+
+```excel
+=AVERAGEIF(C2:C16,"CSE",I2:I16)
+```
+
+Result:
+
+```text
+257.14%
+```
+
+---
+
+## EEE
+
+In L3:
+
+```excel
+=AVERAGEIF(C2:C16,"EEE",I2:I16)
+```
+
+Result:
+
+```text
+203.75%
+```
+
+---
+
+## BBA
+
+In L4:
+
+```excel
+=AVERAGEIF(C2:C16,"BBA",I2:I16)
+```
+
+Result:
+
+```text
+245.83%
+```
+
+---
+
+## Final Table
+
+| Department | Average Borrowing Rate |
+| ---------- | ---------------------: |
+| CSE        |                257.14% |
+| EEE        |                203.75% |
+| BBA        |                245.83% |
+
+---
+
+# 10.8 Department-wise Total Books Borrowed
+
+Create another table:
+
+| K          | L                    |
+| ---------- | -------------------- |
+| Department | Total Books Borrowed |
+| CSE        |                      |
+| EEE        |                      |
+| BBA        |                      |
+
+---
+
+## CSE
+
+```excel
+=SUMIF(C2:C16,"CSE",G2:G16)
+```
+
+Result:
+
+```text
+84
+```
+
+---
+
+## EEE
+
+```excel
+=SUMIF(C2:C16,"EEE",G2:G16)
+```
+
+Result:
+
+```text
+31
+```
+
+---
+
+## BBA
+
+```excel
+=SUMIF(C2:C16,"BBA",G2:G16)
+```
+
+Result:
+
+```text
+29
+```
+
+---
+
+## Final Table
+
+| Department | Total Books Borrowed |
+| ---------- | -------------------: |
+| CSE        |                   84 |
+| EEE        |                   31 |
+| BBA        |                   29 |
+
+---
+
+# 10.9 Most Borrowed Book
+
+We need to find the highest value in:
+
+```text
+G2:G16
+```
+
+Use:
+
+```excel
+=MAX(G2:G16)
+```
+
+Result:
+
+```text
+15
+```
+
+Now find which book has 15 borrowed books.
+
+From the dataset:
+
+```text
+B004 — Operating System Concepts
+```
+
+Therefore:
+
+```text
+Most Borrowed Book = Operating System Concepts
+Books Borrowed = 15
+```
+
+---
+
+## Optional Formula to Find Book Title
+
+If your Excel supports `XLOOKUP`:
+
+```excel
+=XLOOKUP(MAX(G2:G16),G2:G16,B2:B16)
+```
+
+Result:
+
+```text
+Operating System Concepts
+```
+
+---
+
+## Alternative Formula
+
+If `XLOOKUP` is unavailable:
+
+```excel
+=INDEX(B2:B16,MATCH(MAX(G2:G16),G2:G16,0))
+```
+
+---
+
+# 10.10 Least Borrowed Book
+
+Use:
+
+```excel
+=MIN(G2:G16)
+```
+
+Result:
+
+```text
+4
+```
+
+The book with 4 borrowed copies is:
+
+```text
+B015 — Human Resource Management
+```
+
+Therefore:
+
+```text
+Least Borrowed Book = Human Resource Management
+Books Borrowed = 4
+```
+
+---
+
+## Optional Formula
+
+```excel
+=XLOOKUP(MIN(G2:G16),G2:G16,B2:B16)
+```
+
+Result:
+
+```text
+Human Resource Management
+```
+
+---
+
+# 10.11 Number of Books with No Available Copies
+
+The task asks for:
+
+```text
+Number of books with no available copies
+```
+
+Normally we would use:
+
+```excel
+=COUNTIF(H2:H16,0)
+```
+
+However, because this dataset produces **negative Available Copies**, there are no records exactly equal to zero.
+
+Result:
+
+```text
+0
+```
+
+But this is another indication of the data inconsistency.
+
+---
+
+## Better Validation Check
+
+To identify records where no copies are available **or the calculation becomes invalid**, use:
+
+```excel
+=COUNTIF(H2:H16,"<=0")
+```
+
+Result:
+
+```text
+15
+```
+
+Therefore:
+
+```text
+15 records have zero or negative calculated availability.
+```
+
+This is consistent with the validation result that every record has:
+
+```text
+Books Borrowed > Total Copies
+```
+
+---
+
+# 10.12 Relationship Between Total Copies and Books Borrowed
+
+Use the `CORREL()` function.
+
+Total Copies:
+
+```text
+F2:F16
+```
+
+Books Borrowed:
+
+```text
+G2:G16
+```
+
+Formula:
+
+```excel
+=CORREL(F2:F16,G2:G16)
+```
+
+Result:
+
+```text
+Approximately 0.770
+```
+
+---
+
+## Interpretation
+
+The correlation coefficient is approximately:
+
+```text
+r = 0.770
+```
+
+This indicates a **positive relationship** between Total Copies and Books Borrowed in this dataset.
+
+In simple terms:
+
+> Books with more total copies generally tend to have more borrowing activity in the given dataset.
+
+---
