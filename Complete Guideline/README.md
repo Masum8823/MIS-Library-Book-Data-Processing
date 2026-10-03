@@ -27,3 +27,101 @@ This project demonstrates how raw library data can be collected, entered, valida
 * [17. Final Checklist](#17-final-checklist)
 
 ---
+
+# 1. Project Overview
+
+## Project Title
+
+**University Library Book Data Processing**
+
+## Project Scenario
+
+A university wants to develop a simple **Library Management Information System**.
+
+Raw library book information was collected from different sources. The data is not properly organized and may contain inconsistencies.
+
+The objective of this project is to process the raw library data using Microsoft Excel and generate useful information about:
+
+* Total Copies
+* Books Borrowed
+* Available Copies
+* Borrowing Rate
+* Department-wise borrowing
+* Most borrowed book
+* Least borrowed book
+* Books with no available copies
+* Relationship between total copies and books borrowed
+* Data visualization
+
+---
+
+# 2. Complete Project Workflow
+
+The project follows these **8 stages**:
+
+```text
+Data Collection
+       ↓
+Data Entry
+       ↓
+Data Validation
+       ↓
+Data Storage
+       ↓
+Data Processing
+       ↓
+Data Analysis
+       ↓
+Reporting
+       ↓
+Visualization
+```
+
+---
+
+# 3. Raw Data
+
+The following raw data was collected from different sources:
+
+```text
+B001, Introduction to Algorithms, CSE, Thomas Cormen, 2019, 5, 12
+B002, Database System Concepts, CSE, Abraham Silberschatz, 2018, 4, 10
+B003, Computer Networks, CSE, Andrew Tanenbaum, 2020, 3, 8
+B004, Operating System Concepts, CSE, Abraham Silberschatz, 2018, 6, 15
+B005, Engineering Mathematics, EEE, Erwin Kreyszig, 2017, 5, 7
+B006, Digital Logic Design, EEE, Morris Mano, 2019, 4, 9
+B007, Principles of Marketing, BBA, Philip Kotler, 2021, 3, 11
+B008, Financial Accounting, BBA, Jerry Weygandt, 2020, 4, 6
+B009, Software Engineering, CSE, Ian Sommerville, 2019, 5, 13
+B010, Microprocessor Architecture, EEE, Ramesh Gaonkar, 2018, 2, 5
+B011, Data Structures, CSE, Seymour Lipschutz, 2020, 6, 14
+B012, Business Communication, BBA, Mary Guffey, 2021, 3, 8
+B013, Artificial Intelligence, CSE, Stuart Russell, 2020, 4, 12
+B014, Electronic Devices, EEE, Thomas Floyd, 2019, 5, 10
+B015, Human Resource Management, BBA, Gary Dessler, 2021, 2, 4
+```
+
+---
+
+# 4. Data Fields
+
+The raw data contains the following fields:
+
+| Column | Field            |
+| ------ | ---------------- |
+| A      | Book ID          |
+| B      | Book Title       |
+| C      | Department       |
+| D      | Author           |
+| E      | Publication Year |
+| F      | Total Copies     |
+| G      | Books Borrowed   |
+
+Two new fields will be added later:
+
+| Column | New Field        |
+| ------ | ---------------- |
+| H      | Available Copies |
+| I      | Borrowing Rate   |
+
+---
