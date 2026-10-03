@@ -1905,3 +1905,489 @@ After processing, the main dataset should look like this:
 | B015    | Human Resource Management  | BBA   | 2021 |     2 |        4 |        -2 |    200% |
 
 ---
+
+# 16. Important Excel Functions
+
+## SUM
+
+Used to calculate total.
+
+```excel
+=SUM(F2:F16)
+```
+
+Total Copies.
+
+```excel
+=SUM(G2:G16)
+```
+
+Total Books Borrowed.
+
+```excel
+=SUM(H2:H16)
+```
+
+Total Available Copies.
+
+---
+
+## AVERAGE
+
+Used to calculate average.
+
+```excel
+=AVERAGE(I2:I16)
+```
+
+Average Borrowing Rate.
+
+---
+
+## MAX
+
+Used to find the highest value.
+
+```excel
+=MAX(I2:I16)
+```
+
+Highest Borrowing Rate.
+
+---
+
+## MIN
+
+Used to find the lowest value.
+
+```excel
+=MIN(I2:I16)
+```
+
+Lowest Borrowing Rate.
+
+---
+
+## AVERAGEIF
+
+Used to calculate department-wise average.
+
+```excel
+=AVERAGEIF(C2:C16,"CSE",I2:I16)
+```
+
+---
+
+## SUMIF
+
+Used to calculate department-wise totals.
+
+```excel
+=SUMIF(C2:C16,"CSE",G2:G16)
+```
+
+This calculates total books borrowed by CSE.
+
+---
+
+## COUNTIF
+
+Used to count records satisfying a condition.
+
+Books with exactly zero available copies:
+
+```excel
+=COUNTIF(H2:H16,0)
+```
+
+Records with zero or negative calculated availability:
+
+```excel
+=COUNTIF(H2:H16,"<=0")
+```
+
+---
+
+## CORREL
+
+Used to calculate the relationship between two numerical variables.
+
+```excel
+=CORREL(F2:F16,G2:G16)
+```
+
+This calculates the relationship between:
+
+```text
+Total Copies
+```
+
+and:
+
+```text
+Books Borrowed
+```
+
+---
+
+## IF
+
+Used for validation.
+
+```excel
+=IF(G2>F2,"Invalid","Valid")
+```
+
+Meaning:
+
+```text
+If Borrowed > Total Copies
+        ↓
+     Invalid
+
+Otherwise
+        ↓
+      Valid
+```
+
+---
+
+## XLOOKUP
+
+Used to find the name/title associated with a value.
+
+Most borrowed book:
+
+```excel
+=XLOOKUP(MAX(G2:G16),G2:G16,B2:B16)
+```
+
+Least borrowed book:
+
+```excel
+=XLOOKUP(MIN(G2:G16),G2:G16,B2:B16)
+```
+
+---
+
+## INDEX + MATCH
+
+Alternative to XLOOKUP:
+
+```excel
+=INDEX(B2:B16,MATCH(MAX(G2:G16),G2:G16,0))
+```
+
+---
+
+# 17. Quick Formula Reference
+
+For quick revision, all important formulas are listed here.
+
+### Available Copies
+
+```excel
+=F2-G2
+```
+
+### Borrowing Rate
+
+```excel
+=G2/F2*100
+```
+
+### Total Copies
+
+```excel
+=SUM(F2:F16)
+```
+
+### Total Borrowed
+
+```excel
+=SUM(G2:G16)
+```
+
+### Total Available
+
+```excel
+=SUM(H2:H16)
+```
+
+### Average Borrowing Rate
+
+```excel
+=AVERAGE(I2:I16)
+```
+
+### Highest Borrowing Rate
+
+```excel
+=MAX(I2:I16)
+```
+
+### Lowest Borrowing Rate
+
+```excel
+=MIN(I2:I16)
+```
+
+### CSE Average Borrowing Rate
+
+```excel
+=AVERAGEIF(C2:C16,"CSE",I2:I16)
+```
+
+### EEE Average Borrowing Rate
+
+```excel
+=AVERAGEIF(C2:C16,"EEE",I2:I16)
+```
+
+### BBA Average Borrowing Rate
+
+```excel
+=AVERAGEIF(C2:C16,"BBA",I2:I16)
+```
+
+### CSE Total Borrowed
+
+```excel
+=SUMIF(C2:C16,"CSE",G2:G16)
+```
+
+### EEE Total Borrowed
+
+```excel
+=SUMIF(C2:C16,"EEE",G2:G16)
+```
+
+### BBA Total Borrowed
+
+```excel
+=SUMIF(C2:C16,"BBA",G2:G16)
+```
+
+### Most Borrowed Count
+
+```excel
+=MAX(G2:G16)
+```
+
+### Most Borrowed Book
+
+```excel
+=XLOOKUP(MAX(G2:G16),G2:G16,B2:B16)
+```
+
+### Least Borrowed Count
+
+```excel
+=MIN(G2:G16)
+```
+
+### Least Borrowed Book
+
+```excel
+=XLOOKUP(MIN(G2:G16),G2:G16,B2:B16)
+```
+
+### Exactly Zero Available
+
+```excel
+=COUNTIF(H2:H16,0)
+```
+
+### Zero or Negative Available
+
+```excel
+=COUNTIF(H2:H16,"<=0")
+```
+
+### Validation
+
+```excel
+=IF(G2>F2,"Invalid","Valid")
+```
+
+### Correlation
+
+```excel
+=CORREL(F2:F16,G2:G16)
+```
+
+---
+
+# Final Checklist
+
+## Stage 1 — Data Collection
+
+```text
+☐ At least 3 sources identified
+☐ Source mapping completed
+```
+
+## Stage 2 — Data Entry
+
+```text
+☐ Excel workbook created
+☐ Headers entered
+☐ 15 records entered
+☐ Numeric values entered correctly
+```
+
+## Stage 3 — Data Validation
+
+```text
+☐ Missing data checked
+☐ Duplicate Book IDs checked
+☐ Publication years checked
+☐ Total Copies checked
+☐ Books Borrowed checked
+☐ Borrowed > Total Copies checked
+☐ Departments checked
+```
+
+## Stage 4 — Data Storage
+
+```text
+☐ Excel .xlsx file saved
+☐ Optional CSV file created
+```
+
+## Stage 5 — Data Processing
+
+```text
+☐ Available Copies calculated
+☐ Borrowing Rate calculated
+```
+
+## Stage 6 — Data Analysis
+
+```text
+☐ Total Copies calculated
+☐ Total Borrowed calculated
+☐ Total Available calculated
+☐ Average Borrowing Rate calculated
+☐ Highest Borrowing Rate found
+☐ Lowest Borrowing Rate found
+☐ Department-wise Average Borrowing Rate calculated
+☐ Department-wise Total Borrowed calculated
+☐ Most Borrowed Book found
+☐ Least Borrowed Book found
+☐ No Available Copies checked
+☐ Correlation calculated
+```
+
+## Stage 7 — Reporting
+
+```text
+☐ Major findings summarized
+☐ Data inconsistency reported
+```
+
+## Stage 8 — Visualization
+
+```text
+☐ Department-wise Books Borrowed chart
+☐ Book-wise Borrowing Rate chart
+☐ Available vs Borrowed Copies chart
+☐ Department-wise Total Copies chart
+☐ Total Copies vs Books Borrowed scatter chart
+```
+
+---
+
+# Final Project Workflow
+
+```text
+┌──────────────────────────┐
+│    1. Data Collection    │
+└────────────┬─────────────┘
+             ↓
+┌──────────────────────────┐
+│       2. Data Entry      │
+└────────────┬─────────────┘
+             ↓
+┌──────────────────────────┐
+│    3. Data Validation    │
+│  Missing / Duplicate /   │
+│  Invalid Data Checking   │
+└────────────┬─────────────┘
+             ↓
+┌──────────────────────────┐
+│      4. Data Storage     │
+└────────────┬─────────────┘
+             ↓
+┌──────────────────────────┐
+│    5. Data Processing    │
+│ Available + Borrow Rate  │
+└────────────┬─────────────┘
+             ↓
+┌──────────────────────────┐
+│     6. Data Analysis     │
+└────────────┬─────────────┘
+             ↓
+┌──────────────────────────┐
+│       7. Reporting       │
+└────────────┬─────────────┘
+             ↓
+┌──────────────────────────┐
+│    8. Visualization      │
+└──────────────────────────┘
+```
+
+---
+
+# Project Outcome
+
+This project demonstrates how raw university library data can be transformed into useful management information through a structured data-processing workflow.
+
+The final system provides information about:
+
+* Library inventory
+* Borrowing activity
+* Available copies
+* Borrowing rates
+* Department-wise borrowing
+* Most and least borrowed books
+* Relationship between total copies and borrowing activity
+* Visual representation of library data
+
+The project also demonstrates the importance of **data validation**, because the supplied dataset contains records where:
+
+```text
+Books Borrowed > Total Copies
+```
+
+Identifying such inconsistencies is an important part of a Management Information System.
+
+---
+
+## Tools Used
+
+* Microsoft Excel
+* Excel Tables
+* Conditional Formatting
+* Data Validation
+* Excel Formulas
+* Column Charts
+* Scatter Charts
+* Trendlines
+
+---
+
+## Project Status
+
+```text
+Data Collection        ✓
+Data Entry             ✓
+Data Validation        ✓
+Data Storage           ✓
+Data Processing        ✓
+Data Analysis          ✓
+Reporting              ✓
+Visualization          ✓
+```
+
+**Status: Completed**
